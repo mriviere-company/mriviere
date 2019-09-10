@@ -1,0 +1,116 @@
+body {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Manuale', serif;
+}
+
+.navbar-top {
+    font-family: 'Crimson Text', serif;
+    margin-top: 3rem;
+}
+
+.navbar-footer {
+    background-color: dimgrey;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+h1 {
+    display: inline;
+    font-family: 'Satisfy', cursive;
+}
+
+hr {
+    border-radius: 5px;
+    padding: 0.1rem;
+    background: black;
+}
+
+h2{
+    display: inline;
+    margin-right: 2.5rem;
+}
+
+img {
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: dimgrey;
+}
+
+.btn-primary {
+    background-color: white;
+    border: none;
+    border-radius: 0px;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+#social a:hover {
+    color: blue;
+}
+
+#social a {
+    color: black;
+}
+
+.offers {
+    height: 300px;
+    color: white;
+    margin-bottom: 2rem;
+}
+.titles {
+    color: white;
+    top: 75%;
+    position: relative;
+    text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 1);
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+}
+
+.offer1 {
+    background-image: url("/img/vert.jpg");
+    background-repeat: repeat;
+    background-size: 3px;
+}
+
+.offer2 {
+    background-image: url("/img/bleu.jpg");
+    background-repeat: repeat;
+    background-size: 30px;
+}
+
+.offer3 {
+    background-image: url("/img/noir.jpg");
+    background-repeat: repeat;
+    background-size: 75px;
+}
+
+.creation {
+    background-image: url("/img/creation.png");
+    background-size: cover;
+}
+
+.contact {
+    background-image: url("/img/contact.jpg");
+    background-size: cover;
+}
+
+#social {
+    color: black;
+    list-style: none;
+    margin-left: 2.5rem;
+}
+
+.link {
+    color: gold;
+}
