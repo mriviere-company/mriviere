@@ -10,7 +10,11 @@
                 </h4>
                 <div class="info my-4">
                     <div>-</div>
-                    blabla
+                    1 à 4 semaine(s)
+                    <br>
+                    1.250 à 5.000€
+                    <br>
+                    WordPress - Base de donnée
                 </div>
                 <a href="offer-wp.php"><div class="btn btn-primary">Détails</div></a>
             </div>
@@ -19,13 +23,18 @@
                     <i class="fas fa-angle-double-right"></i>
                 </div>
             </div>
-            <div class="col offers offer2">
+            <div class="col offers offer2 promo-block">
+                <span class="promo-title">PROMO</span>
                 <h4 class="my-4">
                     Formule Light
                 </h4>
                 <div class="info my-4">
                     <div>-</div>
-                    blabla
+                    1 à 2 semaine(s)
+                    <br>
+                    <span class="promo-price-old">1.250 à 2.500€</span> <span class="promo-price-new">400 à 1200€</span>
+                    <br>
+                    html - css - php
                 </div>
                 <a href="offer-light.php"><div class="btn btn-primary">Détails</div></a>
             </div>
@@ -40,7 +49,11 @@
                 </h4>
                 <div class="info my-4">
                     <div>-</div>
-                    blabla
+                    1 à 5 mois
+                    <br>
+                    5.000 à 25.000€
+                    <br>
+                    Symfony - Base de donnée
                 </div>
                 <a href="offer-heavy.php"><div class="btn btn-primary">Détails</div></a>
             </div>
