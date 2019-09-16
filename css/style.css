@@ -4,6 +4,7 @@ body {
     text-align: center;
     font-size: 1.2rem;
     font-family: 'Manuale', serif;
+    overflow-x: hidden;
 }
 
 .navbar-top {
