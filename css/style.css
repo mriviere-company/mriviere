@@ -8,14 +8,17 @@ body {
 
 .navbar-top {
     font-family: 'Crimson Text', serif;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .navbar-footer {
-    background-color: dimgrey;
+    color: white;
+    background-color: darkgrey;
     text-align: right;
-    position: fixed;
+    right: 0;
     bottom: 0;
+    position: fixed;
     width: 100%;
 }
 
@@ -30,7 +33,7 @@ hr {
     background: black;
 }
 
-h2{
+h2 {
     display: inline;
     margin-right: 2.5rem;
 }
@@ -41,7 +44,7 @@ img {
 
 a {
     text-decoration: none;
-    color: dimgrey;
+    color: midnightblue;
 }
 
 .btn-primary {
@@ -55,14 +58,6 @@ a:hover {
     color: black;
 }
 
-#social a:hover {
-    color: blue;
-}
-
-#social a {
-    color: black;
-}
-
 .offers {
     height: 300px;
     color: white;
@@ -73,8 +68,9 @@ a:hover {
     top: 75%;
     position: relative;
     text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 1);
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.8rem;
     border: 1px solid black;
+    background-color: rgba(1, 1, 1, 0.8);
 }
 
 .offer1 {
@@ -96,21 +92,33 @@ a:hover {
 }
 
 .creation {
+    margin: 0 5% 0 5%;
     background-image: url("/img/creation.png");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .contact {
+    margin: 0 5% 0 5%;
     background-image: url("/img/contact.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
-#social {
+#social a:hover {
+    color: white;
+}
+
+#social a {
     color: black;
-    list-style: none;
-    margin-left: 2.5rem;
 }
 
-.link {
-    color: gold;
+.fas {
+    color: midnightblue;
+}
+
+.logo {
+    position: absolute;
+    top: 0%;
+    left: 2%;
 }
