@@ -18,22 +18,25 @@
         <!--Les feuilles de style propre à la landing page-->
         <link rel="stylesheet"type="text/css" href="./css/style.css">
     </head> <!-- Fin du Head -->
+
+    <?php define('activepage', $_SERVER['PHP_SELF'], true); ?>
+
     <header>
         <div class="logo">
             <img height="85" src="/img/logo.jpg">
         </div>
         <div class="navbar-top">
             <h2>
-                <a href="index.php">Accueil</a>
+                <a class="<?php if(activepage=='/index.php')echo 'active'; ?>" href="index.php">Accueil</a>
             </h2>
             <h2>
-                <a href="offers.php">Offres</a>
+                <a class="<?php if(activepage=='/offers.php')echo 'active'; ?>" href="offers.php">Offres</a>
             </h2>
             <h2>
-                <a href="profil.php">Profil</a>
+                <a class="<?php if(activepage=='/profil.php')echo 'active'; ?>" href="profil.php">Profil</a>
             </h2>
             <h2>
-                <a href="contact.php">Contacter</a>
+                <a class="<?php if(activepage=='/contact.php')echo 'active'; ?>" href="contact.php">Contacter</a>
             </h2>
         </div>
         <hr>

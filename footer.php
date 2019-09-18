@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
     <!--Le footer-->
+    <div class="mb-5">
+        <?php if(activepage!='/legals.php')echo '<a target="_blank" href="legals.php">Mentions Légales</a>'; ?>
+    </div>
     <footer>
         <div class="navbar-footer">
             <span id="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                <a target="_blank" href="https://github.com/mriviere-company"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/rivierematthieu/"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="https://www.instagram.com/matthieu_rvr_/"><i class="fab fa-instagram"></i></a>
             </span>
-            <span class="mx-5">© 2019 mriviere</span>
+            <span class="mx-3">© 2019 mriviere</span>
         </div>
     </footer>
 </html>

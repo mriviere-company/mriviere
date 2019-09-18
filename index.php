@@ -32,7 +32,7 @@
                     <div>-</div>
                     1 à 2 semaine(s)
                     <br>
-                    <span class="promo-price-old">1.250 à 2.500€</span> <span class="promo-price-new">400 à 1200€</span>
+                    <span class="promo-price-old">1.250 à 2.500€</span> <span class="promo-price-new">600 à 1200€</span>
                     <br>
                     html - css - php
                 </div>
@@ -61,7 +61,7 @@
         <div class="mt-1">
             <i class="fas fa-arrow-down"></i>
         </div>
-        <div class="row my-5 mx-5 justify-content-center">
+        <div class="row mt-5 mx-5 justify-content-center">
             <div class="col offers contact">
                 <a href="contact.php">
                     <h2 class="titles mr-0">

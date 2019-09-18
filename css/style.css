@@ -60,6 +60,12 @@ a:hover {
     color: black;
 }
 
+.active {
+    padding: 0.1rem 0.5rem;
+    border-radius: 15px;
+    background-color: rgba(1, 1, 1, 0.2);
+}
+
 .offers {
     height: 300px;
     color: white;
@@ -117,6 +123,7 @@ a:hover {
 
 #social a {
     color: black;
+    margin-right: 0.5rem;
 }
 
 .fas {
@@ -134,9 +141,10 @@ a:hover {
 }
 
 .promo-title {
+    font-size: 1rem;
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
     color: orange;
-    border: 1px solid orange;
+    border: 1px dashed orange;
     border-radius: 10px;
     position: absolute;
     top: 2%;
@@ -149,4 +157,8 @@ a:hover {
 
 .promo-price-new {
     color: orange;
+}
+
+#social a {
+    back: darkblue;
 }
