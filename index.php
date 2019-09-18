@@ -3,7 +3,7 @@
     <?php include("header.php"); ?>
         <!--Corps de la landing page-->
     <body>
-        <div class="row mt-4 mx-5">
+        <div class="row mt-4 mx-5 justify-content-center">
             <div class="col offers offer1">
                 <h4 class="my-4">
                     Formule Wordpress
@@ -61,7 +61,7 @@
         <div class="mt-1">
             <i class="fas fa-arrow-down"></i>
         </div>
-        <div class="row my-5 mx-4">
+        <div class="row my-5 mx-5 justify-content-center">
             <div class="col offers contact">
                 <a href="contact.php">
                     <h2 class="titles mr-0">
