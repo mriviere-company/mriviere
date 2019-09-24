@@ -6,6 +6,11 @@
             <div class="col myphoto">
 
             </div>
+            <div class="col-md-1 align-self-center">
+                <div>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
             <div class="col pl-4 mytext">
                 Quaestione igitur per multiplices dilatata fortunas cum ambigerentur quaedam, non nulla levius actitata constaret, post multorum clades Apollinares ambo pater et filius in exilium acti cum ad locum Crateras nomine pervenissent, villam scilicet suam quae ab Antiochia vicensimo et quarto disiungitur lapide, ut mandatum est, fractis cruribus occiduntur.
                 <br>

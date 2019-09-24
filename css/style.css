@@ -117,13 +117,6 @@ a:hover {
     background-repeat: no-repeat;
 }
 
-.contacte {
-    max-width: 500px;
-    background-image: url("/img/contacte.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 .myphoto {
     min-height: 450px;
     max-width: 450px;
