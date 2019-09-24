@@ -19,10 +19,8 @@
                 Le responsable de la publication est une<strong> personne physique</strong><br />
                 <br />
                 Le Webmaster est  : <strong>Matthieu Riviere</strong><br />
-                Contacter le Webmaster :  <strong><a href="mailto:contact@mriviere.eu?subject=Contact a partir des mentions lÃ©gales via le site www.mriviere.eu">contact@mriviere.eu</a></strong><br />
+                Contacter le Webmaster :  <strong><a href="mailto:contact@mriviere.eu?subject=Contact a partir des mentions légales via le site www.mriviere.eu">contact@mriviere.eu</a></strong><br />
                 L’hebergeur du site est : <strong>OVH 2 rue Kellermann 59100 Roubaix</strong><br />
-                <strong><u>CREDIT :</u> </strong> Les mentions légales ont étés générées par<strong> <a href="https://www.generer-mentions-legales.com/generateur-mentions-legales.html" target="_blank">générateur de mentions legales</a></strong><br />
-                Une eau toujours potable avec les <strong><a href="https://www.chamarrel.com/perles-de-ceramique-em-pxl-29_37.html">perles de céramique</a></strong></p>
 
             <p style="text-align:justify"> </p>
 
@@ -59,10 +57,10 @@
                 En France, les données personnelles sont notamment protégées par la loi n° 78-87 du 6 janvier 1978, la loi n° 2004-801 du 6 août 2004, l'article L. 226-13 du Code pénal et la Directive Européenne du 24 octobre 1995.</p>
 
             <p style="text-align:justify">Sur le site www.mriviere.eu, Matthieu Riviere ne collecte des informations personnelles ( suivant l'article 4 loi n°78-17 du 06 janvier 1978) relatives à l'utilisateur que pour le besoin de certains services proposés par le site www.mriviere.eu. L'utilisateur fournit ces informations en toute connaissance de cause, notamment lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à l'utilisateur du site www.mriviere.eu l’obligation ou non de fournir ces informations.<br />
-                Conformément aux dispositions des articles 38 et suivants de la loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à www.mriviere.eu par email : <strong><a href="mailto:contact@mriviere.eu?subject=Contact ï¿½ partir des mentions lï¿½gales via le site www.mriviere.eu">contact@mriviere.eu</a></strong> ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce, en précisant l’adresse à laquelle la réponse doit être envoyée.</p>
+                Conformément aux dispositions des articles 38 et suivants de la loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, tout utilisateur dispose d’un droit d’accès, de rectification, de suppression et d’opposition aux données personnelles le concernant. Pour l’exercer, adressez votre demande à www.mriviere.eu par email : <strong><a href="mailto:contact@mriviere.eu?subject=Contact ï¿½ partir des mentions légales via le site www.mriviere.eu">contact@mriviere.eu</a></strong> ou par écrit dûment signée, accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce, en précisant l’adresse à laquelle la réponse doit être envoyée.</p>
 
             <p style="text-align:justify">Aucune information personnelle de l'utilisateur du site www.mriviere.eu n'est publiée à l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers. Seule l'hypothèse du rachat du site www.mriviere.eu et de ses droits autorise Matthieu Riviere à transmettre les dites informations à l'éventuel acquéreur qui serait à son tour tenu à la même obligation de conservation et de modification des données vis à vis de l'utilisateur du site www.mriviere.eu.<br />
-                Le site www.mriviere.eu est en conformité avec le RGPD voir notre politique RGPD  https://www.mriviere.eu/rgpd.php.</p>
+                Le site www.mriviere.eu est en conformité avec le RGPD : Aucune donnée utilisateur n'est enregistrée ou conservée.</p>
 
             <p style="text-align:justify">Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.</p>
         </div>

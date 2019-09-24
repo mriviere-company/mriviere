@@ -117,6 +117,25 @@ a:hover {
     background-repeat: no-repeat;
 }
 
+.contacte {
+    max-width: 500px;
+    background-image: url("/img/contacte.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.myphoto {
+    min-height: 450px;
+    max-width: 450px;
+    background-image: url("/img/moi.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mytext {
+    text-align: left;
+}
+
 #social a:hover {
     color: white;
 }

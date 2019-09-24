@@ -2,7 +2,7 @@
 <html>
     <!--Le footer-->
     <div class="mb-5">
-        <?php if(activepage!='/legals.php')echo '<a target="_blank" href="legals.php">Mentions Légales</a>'; ?>
+        <?php if(activepage!='/legals.php')echo '<small><a target="_blank" href="legals.php">Mentions Légales</a> - <strong><a href="mailto:contact@mriviere.eu?subject=Demande d\'information">contact@mriviere.eu</a></strong><br/></small>'; ?>
     </div>
     <footer>
         <div class="navbar-footer">
