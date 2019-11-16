@@ -29,7 +29,7 @@
             <h2>
                 <a class="<?php if(activepage=='/index.php')echo 'active'; ?>" href="index.php">Accueil</a>
             </h2>
-            <h2>
+            <h2 hidden>
                 <a class="<?php if(activepage=='/offers.php')echo 'active'; ?>" href="offers.php">Offres</a>
             </h2>
             <h2>

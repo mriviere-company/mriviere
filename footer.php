@@ -11,7 +11,7 @@
                 <a target="_blank" href="https://www.linkedin.com/in/rivierematthieu/"><i class="fab fa-linkedin"></i></a>
                 <a target="_blank" href="https://www.instagram.com/matthieu_rvr_/"><i class="fab fa-instagram"></i></a>
             </span>
-            <span class="mx-3">© 2019 mriviere</span>
+            <span class="mx-3">2019 mriviere ©</span>
         </div>
     </footer>
 </html>

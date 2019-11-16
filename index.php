@@ -16,7 +16,7 @@
                     <br>
                     WordPress - Base de donnée
                 </div>
-                <a href="offer-wp.php"><div class="btn btn-primary">Détails</div></a>
+                <a href="offer-wp.php" hidden><div class="btn btn-primary">Détails</div></a>
             </div>
             <div class="col-md-1 align-self-center">
                 <div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col offers offer2 promo-block">
-                <span class="promo-title">PROMO</span>
+                <!--<span class="promo-title">PROMO</span>-->
                 <h4 class="my-4">
                     Formule Light
                 </h4>
@@ -32,11 +32,12 @@
                     <div>-</div>
                     1 à 2 semaine(s)
                     <br>
-                    <span class="promo-price-old">1.250 à 2.500€</span> <span class="promo-price-new">600 à 1200€</span>
+                    1.250 à 2.500€
+                    <!-- <span class="promo-price-old"></span><span class="promo-price-new">600 à 1200€</span>-->
                     <br>
                     html - css - php
                 </div>
-                <a href="offer-light.php"><div class="btn btn-primary">Détails</div></a>
+                <a href="offer-light.php" hidden><div class="btn btn-primary">Détails</div></a>
             </div>
             <div class="col-md-1 align-self-center">
                 <div>
@@ -55,7 +56,7 @@
                     <br>
                     Symfony - Base de donnée
                 </div>
-                <a href="offer-heavy.php"><div class="btn btn-primary">Détails</div></a>
+                <a href="offer-heavy.php" hidden><div class="btn btn-primary">Détails</div></a>
             </div>
         </div>
         <div class="mt-1">
