@@ -23,8 +23,8 @@
                     <i class="fas fa-angle-double-right"></i>
                 </div>
             </div>
-            <div class="col offers offer2 promo-block">
-                <!--<span class="promo-title">PROMO</span>-->
+            <div class="col offers offer2"> <!--promo-block-->
+                <!--<span class="promo-title">PROMO</span> -->
                 <h4 class="my-4">
                     Formule Light
                 </h4>

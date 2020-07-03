@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+//On enregistre notre token
+$token = bin2hex(rand(1,3000) + rand(1,3000) + rand(1,3000) + rand(1,3000) + rand(1,3000) + rand(1,3000));
+
+$_SESSION['token'] = $token;
+?>
+
 <!DOCTYPE html>
 <html>
     <?php include("header.php"); ?>
@@ -17,7 +26,9 @@
                 <br>
                 <br>
                 <textarea name="message" id="message" rows="7" cols="50" required>Bonjour, </textarea><br><br>
+                <input type="hidden" name="token" id="token" value="<?php echo $token; ?>" />
 
+                <label>Captcha :</label> <input name="captcha" id="captcha" placeholder="1 + 1 = ?" size="6" required></input>
                 <input type="submit" value="Envoyer">
             </form>
         </div>

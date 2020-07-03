@@ -23,7 +23,7 @@
 
     <header>
         <div class="logo">
-            <img height="85" src="/img/logo.jpg">
+            <img alt="Création de site internet symfony 5 pour particuliers et professionnel." height="85" src="/img/logo.jpg">
         </div>
         <div class="navbar-top">
             <h2>
