@@ -19,7 +19,7 @@
         <link rel="stylesheet"type="text/css" href="./css/style.css">
     </head> <!-- Fin du Head -->
 
-    <?php define('activepage', $_SERVER['PHP_SELF'], true); ?>
+    <?php define('activepage', $_SERVER['PHP_SELF']); ?>
 
     <header>
         <div class="logo">
