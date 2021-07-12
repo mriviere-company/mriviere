@@ -9,8 +9,6 @@ body {
 
 .navbar-top {
     font-family: 'Crimson Text', serif;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
     margin: 1.5rem 6rem 1.5rem 6rem;
 }
 
@@ -144,7 +142,7 @@ a:hover {
 
 .logo {
     position: absolute;
-    top: 0%;
+    top: 0;
     left: 2%;
 }
 
@@ -169,8 +167,4 @@ a:hover {
 
 .promo-price-new {
     color: orange;
-}
-
-#social a {
-    back: darkblue;
 }
