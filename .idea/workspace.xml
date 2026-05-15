@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb6d2b2-2790-43ed-b245-7a946ff8c522" name="Default" comment="Update monolog configuration to use environment-specific log paths and adjust workspace.xml" />
+    <list default="true" id="3cb6d2b2-2790-43ed-b245-7a946ff8c522" name="Default" comment="Update permissions policy in .htaccess and workspace.xml tasks configuration">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/locales/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/locales/fr.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -294,7 +298,7 @@
       <workItem from="1626082892533" duration="833000" />
       <workItem from="1626084270814" duration="260000" />
       <workItem from="1778319584192" duration="23003000" />
-      <workItem from="1778819286315" duration="4518000" />
+      <workItem from="1778819286315" duration="5484000" />
     </task>
     <task id="LOCAL-00001" summary="Remove legacy PHP pages and assets; migrate to Symfony-based structure.">
       <option name="closed" value="true" />
@@ -328,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778823682353</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update permissions policy in .htaccess and workspace.xml tasks configuration">
+      <option name="closed" value="true" />
+      <created>1778824050749</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778824050749</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +351,8 @@
     <MESSAGE value="Update workspace.xml and .env for Symfony migration" />
     <MESSAGE value="Refactor deployment script, improve .htaccess rules, and update workspace configuration for Symfony compatibility" />
     <MESSAGE value="Update monolog configuration to use environment-specific log paths and adjust workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update monolog configuration to use environment-specific log paths and adjust workspace.xml" />
+    <MESSAGE value="Update permissions policy in .htaccess and workspace.xml tasks configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update permissions policy in .htaccess and workspace.xml tasks configuration" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
