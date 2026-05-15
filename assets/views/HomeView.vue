@@ -11,12 +11,15 @@ import { usePackagesStore } from '@/stores/packages';
 import { storeToRefs } from 'pinia';
 import { formatMoney } from '@/i18n';
 import { localePath } from '@/router';
+import { useFullpageScroll } from '@/composables/useFullpageScroll';
 
 const { t } = useI18n();
 const packagesStore = usePackagesStore();
 const { items: packages } = storeToRefs(packagesStore);
 
 const callbackOpen = ref(false);
+
+useFullpageScroll();
 
 const STAGGER_MS = 110;
 const REVEAL_TARGETS_SELECTOR = [
@@ -355,10 +358,12 @@ const features = [
 
 .features {
   &__head {
-    margin-bottom: var(--space-7);
+    margin: 0 auto var(--space-7);
     max-width: 720px;
+    text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: var(--space-4);
   }
 

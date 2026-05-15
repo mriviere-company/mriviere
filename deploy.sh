@@ -14,6 +14,7 @@
 #   ./deploy.sh --no-composer           # skip remote composer install (composer.lock unchanged)
 #   ./deploy.sh --dry-run               # rsync --dry-run, no remote commands
 #   ./deploy.sh --skip-migrations       # don't run doctrine:migrations:migrate
+#   ./deploy.sh --prune-stale           # remove dev-only files left on the remote by older deploys
 #   ./deploy.sh --release-tag=v1.2.3    # tag the deploy in the remote release log
 #
 # Required env vars (put them in .deploy.env, gitignored):
@@ -39,6 +40,7 @@ DO_BUILD=1
 DO_COMPOSER=1
 DRY_RUN=0
 RUN_MIGRATIONS=1
+PRUNE_STALE=0
 RELEASE_TAG="$(git rev-parse --short HEAD 2>/dev/null || echo 'manual')"
 
 for arg in "$@"; do
@@ -47,6 +49,7 @@ for arg in "$@"; do
     --no-composer)      DO_COMPOSER=0 ;;
     --dry-run)          DRY_RUN=1 ;;
     --skip-migrations)  RUN_MIGRATIONS=0 ;;
+    --prune-stale)      PRUNE_STALE=1 ;;
     --release-tag=*)    RELEASE_TAG="${arg#*=}" ;;
     *) echo "Unknown flag: $arg" >&2; exit 64 ;;
   esac
@@ -84,21 +87,64 @@ RSYNC_FLAGS=(
   --delete
   --human-readable
   -e "ssh -p ${HOSTINGER_SSH_PORT}"
-  --exclude='.git/'
-  --exclude='node_modules/'
-  --exclude='vendor/'               # composer install runs on the remote
-  --exclude='var/cache/*'
-  --exclude='var/log/*'
-  --exclude='var/test.db'
-  --exclude='.env.local'
-  --exclude='.env.*.local'
-  --exclude='.deploy.env'
-  --exclude='tests/'
-  --exclude='public/build/.vite/manifest.json.gz'
-  --include='public/uploads/'
-  --exclude='public/uploads/*/*'   # keep dir, skip user-uploaded content
-  --exclude='.idea/'
-  --exclude='*.log'
+
+  # Patterns starting with `/` are anchored to the transfer root, so they cannot
+  # accidentally match a same-named dir/file deeper in the tree. Critical here:
+  # `/assets/` excludes the Vue/TS sources only — without the leading slash,
+  # rsync would *also* skip `public/build/assets/` (the compiled JS/CSS the
+  # browser loads) and break the site.
+
+  # VCS / IDE / local tooling — never useful on the server.
+  --exclude='/.git/'
+  --exclude='/.github/'
+  --exclude='/.gitignore'
+  --exclude='/.idea/'
+  --exclude='/.claude/'
+
+  # Dependencies — installed on the remote by composer (PHP) ; npm is build-only.
+  --exclude='node_modules/'         # keep unanchored: also exclude nested ones
+  --exclude='/vendor/'
+  --exclude='/package.json'
+  --exclude='/package-lock.json'
+
+  # Front-end sources — already compiled into public/build/ locally.
+  --exclude='/assets/'
+  --exclude='/vite.config.ts'
+  --exclude='/tsconfig.json'
+  --exclude='/tsconfig.tsbuildinfo'
+
+  # Tests + testing config — not used at runtime.
+  --exclude='/tests/'
+  --exclude='/test-results/'
+  --exclude='/.phpunit.cache/'
+  --exclude='/phpunit.dist.xml'
+  --exclude='/playwright.config.ts'
+  --exclude='/.env.test'
+
+  # Runtime state that must stay local to each environment.
+  --exclude='/var/cache/*'
+  --exclude='/var/log/*'
+  --exclude='/var/test.db'
+  --exclude='/.env.local'
+  --exclude='/.env.*.local'
+
+  # Deploy + local-dev tooling — used from the dev machine, not the server.
+  --exclude='/deploy.sh'
+  --exclude='/.deploy.env'
+  --exclude='/.deploy.env.example'
+  --exclude='/start-local.sh'
+
+  # Project docs — kept in git, not needed on the host.
+  --exclude='/docs/'
+  --exclude='/CLAUDE.md'
+  --exclude='/README.md'
+  --exclude='/*.docx'
+
+  # Misc.
+  --exclude='/public/build/.vite/manifest.json.gz'
+  --include='/public/uploads/'
+  --exclude='/public/uploads/*/*'  # keep dir, skip user-uploaded content
+  --exclude='*.log'                # any depth — runtime logs everywhere
 )
 
 if [ "$DRY_RUN" -eq 1 ]; then
@@ -122,6 +168,27 @@ cd ${HOSTINGER_REMOTE_PATH}
 # .env.local must exist on the remote — never copied from local.
 if [ ! -f .env.local ]; then
   echo \"⚠️  .env.local missing on remote — populate it (see docs/DEPLOY.md §3) before clients hit the site.\" >&2
+fi
+
+# Prune dev-only files that earlier deploys may have shipped. Explicit allow-list
+# of paths only — never globs — so we cannot wipe vendor/, var/cache, uploads,
+# .env.local or super-admin keys. Safe to re-run; missing paths are skipped.
+if [ \"${PRUNE_STALE}\" -eq 1 ]; then
+  echo \"▶ Pruning stale dev-only files on remote…\"
+  for path in \\
+    assets docs tests test-results node_modules \\
+    .github .claude .idea .phpunit.cache \\
+    CLAUDE.md README.md devis_site_web.docx \\
+    package.json package-lock.json \\
+    vite.config.ts tsconfig.json tsconfig.tsbuildinfo \\
+    phpunit.dist.xml playwright.config.ts \\
+    start-local.sh deploy.sh .deploy.env.example \\
+    .env.test .gitignore; do
+    if [ -e \"\$path\" ]; then
+      echo \"  - rm -rf \$path\"
+      rm -rf -- \"\$path\"
+    fi
+  done
 fi
 
 # Install vendor for prod on the remote — uses the server'\''s PHP 8.4 so the

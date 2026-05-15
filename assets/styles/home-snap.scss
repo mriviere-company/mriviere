@@ -10,6 +10,9 @@
 
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
   html.home-snap {
+    // Strict page-par-page : la JS (`useFullpageScroll`) intercepte wheel +
+    // clavier pour les transitions discrètes ; CSS scroll-snap couvre les
+    // entrées non-JS (drag de scrollbar, ancres) avec la même rigueur.
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
