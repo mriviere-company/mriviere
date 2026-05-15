@@ -3,13 +3,15 @@
 #
 # Hostinger Business plans expose SSH; we don't use Docker because the host is
 # a shared LAMP environment. The script:
-#   1. Builds the front-end and installs vendor for prod (no-dev, optimised autoloader)
-#   2. Rsyncs the project (excluding caches, node_modules, .git, .env*) to the remote
-#   3. Runs migrations + clears the prod cache + restarts php-fpm pool (best-effort)
+#   1. Builds the front-end locally (npm run build → public/build/)
+#   2. Rsyncs the source (excluding vendor/, node_modules/, caches, .git, .env*) to remote
+#   3. Runs `composer install --no-dev` on the remote (uses the server's PHP 8.4)
+#   4. Runs migrations + clears the prod cache + appends a release log line
 #
 # Usage:
 #   ./deploy.sh                         # full deploy (build + sync + post-deploy)
-#   ./deploy.sh --no-build              # skip the build step (you already have public/build/)
+#   ./deploy.sh --no-build              # skip the front-end build (public/build/ already up-to-date)
+#   ./deploy.sh --no-composer           # skip remote composer install (composer.lock unchanged)
 #   ./deploy.sh --dry-run               # rsync --dry-run, no remote commands
 #   ./deploy.sh --skip-migrations       # don't run doctrine:migrations:migrate
 #   ./deploy.sh --release-tag=v1.2.3    # tag the deploy in the remote release log
@@ -34,6 +36,7 @@ if [ -f .deploy.env ]; then
 fi
 
 DO_BUILD=1
+DO_COMPOSER=1
 DRY_RUN=0
 RUN_MIGRATIONS=1
 RELEASE_TAG="$(git rev-parse --short HEAD 2>/dev/null || echo 'manual')"
@@ -41,6 +44,7 @@ RELEASE_TAG="$(git rev-parse --short HEAD 2>/dev/null || echo 'manual')"
 for arg in "$@"; do
   case "$arg" in
     --no-build)         DO_BUILD=0 ;;
+    --no-composer)      DO_COMPOSER=0 ;;
     --dry-run)          DRY_RUN=1 ;;
     --skip-migrations)  RUN_MIGRATIONS=0 ;;
     --release-tag=*)    RELEASE_TAG="${arg#*=}" ;;
@@ -57,15 +61,13 @@ done
 REMOTE="${HOSTINGER_SSH_USER}@${HOSTINGER_SSH_HOST}"
 SSH="ssh -p ${HOSTINGER_SSH_PORT} ${REMOTE}"
 
-# ─── Local build ─────────────────────────────────────────────────────────────
+# ─── Local build + pre-flight ────────────────────────────────────────────────
 if [ "$DO_BUILD" -eq 1 ]; then
   echo "▶ Building front-end (npm run build)…"
   npm run build
 
-  echo "▶ Installing vendor for prod (no-dev, optimised autoloader)…"
-  composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction
-
-  echo "▶ Pre-flight: composer audit"
+  echo "▶ Pre-flight: composer validate + audit"
+  composer validate --no-check-publish --strict || { echo "Aborting: composer.json / composer.lock out of sync." >&2; exit 65; }
   composer audit --no-dev || { echo "Aborting deploy: composer audit reported issues." >&2; exit 65; }
 fi
 
@@ -84,6 +86,7 @@ RSYNC_FLAGS=(
   -e "ssh -p ${HOSTINGER_SSH_PORT}"
   --exclude='.git/'
   --exclude='node_modules/'
+  --exclude='vendor/'               # composer install runs on the remote
   --exclude='var/cache/*'
   --exclude='var/log/*'
   --exclude='var/test.db'
@@ -119,6 +122,15 @@ cd ${HOSTINGER_REMOTE_PATH}
 # .env.local must exist on the remote — never copied from local.
 if [ ! -f .env.local ]; then
   echo \"⚠️  .env.local missing on remote — populate it (see docs/DEPLOY.md §3) before clients hit the site.\" >&2
+fi
+
+# Install vendor for prod on the remote — uses the server'\''s PHP 8.4 so the
+# autoloader and any platform checks match the runtime exactly.
+# APP_ENV=prod is forced so the post-install cache:clear runs in prod and does
+# not try to load dev-only bundles (DoctrineFixturesBundle, MakerBundle, …).
+if [ \"${DO_COMPOSER}\" -eq 1 ]; then
+  APP_ENV=prod APP_DEBUG=0 composer install --no-dev --optimize-autoloader \
+    --classmap-authoritative --no-interaction --no-progress --prefer-dist
 fi
 
 # Generate the Ed25519 keypair if it is missing (super-admin dashboard).

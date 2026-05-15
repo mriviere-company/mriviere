@@ -9,7 +9,8 @@
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
-# Block access to project root files (composer.json, .env, vendor/, etc.)
-<FilesMatch "^(composer\.|symfony\.|\.|phpunit|playwright|vite|tsconfig|package).*">
+# Block access to project root files. Patterns are anchored ($) to avoid
+# false positives like Vite chunks named "packages-XXX.js" or "vite-YYY.js".
+<FilesMatch "^(composer\.(json|lock|phar)|symfony\.lock|phpunit\.dist\.xml|playwright\.config\.ts|vite\.config\.ts|tsconfig.*\.json|package\.json|package-lock\.json|\..*)$">
     Require all denied
 </FilesMatch>
