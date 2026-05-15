@@ -1,0 +1,15 @@
+Nouveau devis — {{ quote.package.name }}
+Référence : {{ quote.id }}
+
+Client :
+{{ quote.clientName }}{% if quote.clientCompany %} ({{ quote.clientCompany }}){% endif %}
+{{ quote.clientEmail }} · {{ quote.clientPhone }}
+{% if quote.clientAddress %}{{ quote.clientAddress }}{% endif %}
+
+Brief :
+{{ quote.projectDescription }}
+
+Montants :
+Création : {{ (quote.totalOneShotCents / 100)|number_format(0, ',', ' ') }} $ CAD
+Abonnement : {{ (quote.totalMonthlyCents / 100)|number_format(0, ',', ' ') }} $ CAD/mois
+Acompte 50 % : {{ (quote.totalOneShotCents / 200)|number_format(0, ',', ' ') }} $ CAD

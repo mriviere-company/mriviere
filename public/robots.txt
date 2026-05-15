@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /stripe/
+
+Sitemap: https://www.rivierematthieu.com/sitemap.xml

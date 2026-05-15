@@ -1,0 +1,80 @@
+name: Deploy to Hostinger
+
+# Manual-trigger only. Production deploys should never be automatic — we want a
+# human to confirm CI is green and the moment is right.
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Tag for the release log (default: short SHA)'
+        required: false
+        default: ''
+      skip_migrations:
+        description: 'Skip doctrine:migrations:migrate'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: ctype, iconv, sodium, gd
+          coverage: none
+          tools: composer:v2
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: composer install (no-dev, optimised)
+        run: composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction
+
+      - name: composer audit
+        run: composer audit
+
+      - name: npm ci + build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.HOSTINGER_SSH_PORT }} ${{ secrets.HOSTINGER_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run deploy.sh
+        env:
+          HOSTINGER_SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          HOSTINGER_SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          HOSTINGER_SSH_PORT: ${{ secrets.HOSTINGER_SSH_PORT }}
+          HOSTINGER_REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
+          HOSTINGER_PHP_BIN: ${{ secrets.HOSTINGER_PHP_BIN || '/usr/bin/php8.4' }}
+        run: |
+          FLAGS="--no-build"
+          if [ "${{ inputs.skip_migrations }}" = "true" ]; then
+            FLAGS="$FLAGS --skip-migrations"
+          fi
+          if [ -n "${{ inputs.release_tag }}" ]; then
+            FLAGS="$FLAGS --release-tag=${{ inputs.release_tag }}"
+          fi
+          ./deploy.sh $FLAGS
+
+      - name: Smoke test
+        run: |
+          curl -sf -o /dev/null -w "HTTP %{http_code}\n" https://${{ secrets.HOSTINGER_SSH_HOST }}/
+          curl -sf -o /dev/null -w "Sitemap %{http_code}\n" https://${{ secrets.HOSTINGER_SSH_HOST }}/sitemap.xml
+          curl -sf -o /dev/null -w "OG %{http_code}\n" "https://${{ secrets.HOSTINGER_SSH_HOST }}/og.png?title=test"

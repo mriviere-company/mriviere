@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body style="font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #0a0e1a;">
+    <h1 style="font-size: 20px; margin-bottom: 12px; color: #0F2A5F;">Demande de rappel — rivierematthieu.com</h1>
+    <p>De&nbsp;: <strong>{{ callback.name }}</strong>{% if callback.email %} &lt;{{ callback.email }}&gt;{% else %} <em style="color: #6A7287;">(pas d'email — appel téléphonique uniquement)</em>{% endif %}</p>
+    <p>Reçue le {{ callback.createdAt|date('d/m/Y \\à H:i') }}{% if callback.ip %} depuis {{ callback.ip }}{% endif %}.</p>
+
+    <div style="background: #FAFAF7; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #2B5BD7;">
+        <p style="margin: 0;"><strong>📞 Téléphone à rappeler :</strong> <a href="tel:{{ callback.phone|replace({' ': '', '-': '', '.': '', '(': '', ')': ''}) }}" style="color: #2B5BD7; font-size: 18px;">{{ callback.phone }}</a></p>
+        <p style="margin: 12px 0 0;"><strong>📅 Créneau souhaité :</strong> {{ callback.preferredSlot|date('l j F Y \\à H\\hi', 'America/Toronto') }} (heure du Québec)</p>
+    </div>
+
+    {% if callback.message %}
+    <h2 style="font-size: 16px; margin-top: 20px;">Message du client</h2>
+    <pre style="white-space: pre-wrap; font-family: inherit; line-height: 1.6;">{{ callback.message }}</pre>
+    {% endif %}
+
+    <p style="margin-top: 24px; font-size: 13px; color: #6A7287;">
+        {% if callback.email %}Répondre à cet email pour écrire au client, ou utiliser le lien tél ci-dessus.
+        {% else %}Le client n'a pas laissé d'email — utiliser le numéro ci-dessus pour le rappeler.{% endif %}
+    </p>
+</body>
+</html>

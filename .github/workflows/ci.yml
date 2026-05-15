@@ -1,0 +1,127 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: rootpw
+          MARIADB_DATABASE: mriviere
+          MARIADB_USER: mriviere
+          MARIADB_PASSWORD: mriviere
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      APP_ENV: test
+      DATABASE_URL: "mysql://mriviere:mriviere@127.0.0.1:3306/mriviere?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
+      MAILER_DSN: "null://null"
+      PUBLIC_BASE_URL: "http://localhost:8000"
+      FROM_EMAIL: "noreply@example.com"
+      ADMIN_EMAIL: "admin@example.com"
+      STRIPE_SECRET_KEY: "sk_test_ci"
+      STRIPE_WEBHOOK_SECRET: "whsec_ci"
+      STRIPE_PRICE_STARTER: "price_ci_starter"
+      STRIPE_PRICE_STANDARD: "price_ci_standard"
+      STRIPE_PRICE_PREMIUM: "price_ci_premium"
+      STRIPE_DASHBOARD_BASE: "https://dashboard.stripe.com/test"
+      SUPER_ADMIN_ISSUER: "http://localhost:8000"
+      SUPER_ADMIN_PRIVATE_KEY: "%kernel.project_dir%/var/keys/super_admin_private.pem"
+      LOCK_DSN: "flock"
+      APP_SECRET: "$ecretf0rt3st"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: ctype, iconv, pdo, pdo_mysql, sodium, gd
+          coverage: none
+          tools: composer:v2
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Composer install
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: composer audit
+        run: composer audit
+
+      - name: Generate Ed25519 keypair (super-admin tests)
+        run: |
+          mkdir -p var/keys
+          openssl genpkey -algorithm Ed25519 -out var/keys/super_admin_private.pem
+          openssl pkey -in var/keys/super_admin_private.pem -pubout -out var/keys/super_admin_public.pem
+
+      - name: Wait for MariaDB
+        run: |
+          for i in {1..30}; do
+            mysqladmin ping -h127.0.0.1 -umriviere -pmriviere && break
+            sleep 1
+          done
+
+      - name: Apply migrations + fixtures
+        run: |
+          php bin/console doctrine:migrations:migrate --no-interaction --env=test
+          php bin/console doctrine:fixtures:load --no-interaction --env=test
+
+      - name: PHPUnit
+        run: php bin/phpunit
+
+      - name: npm ci
+        run: npm ci
+
+      - name: vue-tsc
+        run: npm run type-check
+
+      - name: Vitest
+        run: npm test
+
+      - name: Build production assets
+        run: npm run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Symfony CLI
+        run: |
+          curl -sS https://get.symfony.com/cli/installer | bash
+          sudo mv ~/.symfony*/bin/symfony /usr/local/bin/symfony
+
+      - name: Cache clear (prod)
+        run: php bin/console cache:clear --env=prod
+
+      - name: Start Symfony server (prod)
+        run: APP_ENV=prod symfony server:start --port=8000 --no-tls --daemon
+
+      - name: Playwright E2E
+        run: npx playwright test --reporter=list
+        env:
+          E2E_BASE_URL: http://127.0.0.1:8000
+
+      - name: Upload Playwright traces on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7

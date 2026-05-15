@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body style="font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #0a0a0a;">
+    <h1 style="font-size: 20px; margin-bottom: 12px;">Nouveau message — rivierematthieu.com</h1>
+    <p>De&nbsp;: <strong>{{ message.name }}</strong> &lt;{{ message.email }}&gt;</p>
+    <p>Reçu le {{ message.createdAt|date('d/m/Y \\à H:i') }}{% if message.ip %} depuis {{ message.ip }}{% endif %}.</p>
+    <hr style="border: 0; border-top: 1px solid #e5e5e5; margin: 16px 0;" />
+    <pre style="white-space: pre-wrap; font-family: inherit; line-height: 1.6;">{{ message.message }}</pre>
+    <p style="margin-top: 24px; font-size: 13px; color: #707070;">
+        Répondre directement à cet email pour répondre au client.
+    </p>
+</body>
+</html>

@@ -1,0 +1,7 @@
+pentatrion_vite:
+    default_config: 'app'
+    configs:
+        app:
+            build_directory: 'build'
+    script_attributes:
+        type: 'module'

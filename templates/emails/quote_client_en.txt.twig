@@ -1,0 +1,15 @@
+Hi {{ quote.clientName }},
+
+Thanks for your quote request. Here is the recap:
+
+Plan: {{ quote.package.name }} ({{ quote.package.maxPages }} pages)
+Build: {{ (quote.totalOneShotCents / 100)|number_format(0, '.', ',') }} CAD
+Subscription: {{ (quote.totalMonthlyCents / 100)|number_format(0, '.', ',') }} CAD/month
+
+I will personally get back to you within 24 business hours with the next steps
+(timeline, content requests, signing the official quote).
+
+Talk soon,
+Matthieu Rivière
+contact@rivierematthieu.com · +1 438 367 8089
+3915 Croissant Olivier, Brossard, Québec J4Y 2L2 — NEQ 2279489522

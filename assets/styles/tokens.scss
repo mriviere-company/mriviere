@@ -1,0 +1,113 @@
+// Design tokens — mriviere.eu
+//
+// Identity : « Studio de développement web · Matthieu Rivière ».
+// Badge filaire, hexagone bleu, typographie Bricolage Grotesque.
+//
+// Palette (priorité décroissante) :
+//   Navy   #0F2A5F — accent principal (light), structure
+//   Cobalt #2B5BD7 — accent secondaire (light), accent principal (dark)
+//   Ink    #0A0E1A — fond sombre, texte clair
+//   Paper  #FAFAF7 — fond clair, texte sombre
+
+:root {
+  // Surfaces
+  --color-bg: #FAFAF7;            // Paper
+  --color-bg-soft: #F1F0EA;       // Paper, slightly recessed
+  --color-bg-elev: #FFFFFF;       // Pure white for cards
+  --color-text: #0A0E1A;          // Ink
+  --color-text-soft: #2C3347;     // Ink lifted
+  --color-text-muted: #6A7287;    // Neutral muted
+  --color-border: rgba(10, 14, 26, 0.10);
+  --color-border-strong: rgba(10, 14, 26, 0.22);
+
+  // Brand accents
+  --color-accent: #0F2A5F;        // Navy — primary brand
+  --color-accent-hover: #0A1F47;  // Navy darker
+  --color-accent-soft: rgba(15, 42, 95, 0.10);
+  --color-accent-2: #2B5BD7;      // Cobalt — secondary
+  --color-accent-2-soft: rgba(43, 91, 215, 0.12);
+
+  // Status (unchanged — distinct from brand on purpose)
+  --color-success: #16a34a;
+  --color-warn: #f59e0b;
+  --color-danger: #dc2626;
+
+  // Overlays
+  --color-overlay: rgba(10, 14, 26, 0.65);
+  --color-glow: 0 0 0 4px rgba(43, 91, 215, 0.22);
+
+  // Typography
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.5rem;
+  --fs-3xl: 3.75rem;
+  --fs-4xl: 5.5rem;
+  // Height-aware : le titre rétrécit aussi sur les écrans courts (laptop 720p,
+  // fenêtre avec dock/barre d'onglets) pour que tout le hero tienne en 100dvh.
+  --fs-display: clamp(2.5rem, min(8vw, 12vh), 6.5rem);
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-base: 1.5;
+  --lh-relaxed: 1.7;
+
+  // Spacing
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(10, 14, 26, 0.06);
+  --shadow-md: 0 12px 32px -16px rgba(10, 14, 26, 0.20);
+  --shadow-lg: 0 28px 56px -24px rgba(10, 14, 26, 0.28);
+  --shadow-glow: 0 0 32px -8px var(--color-accent-2);
+
+  --transition-fast: 120ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --container-max: 1280px;
+  --container-narrow: 880px;
+
+  --z-header: 80;
+  --z-modal: 200;
+  --z-toast: 300;
+}
+
+// Dark mode — Navy is too dark on Ink, so we promote Cobalt to primary.
+[data-theme='dark'] {
+  --color-bg: #0A0E1A;            // Ink
+  --color-bg-soft: #131829;       // Ink lifted
+  --color-bg-elev: #1B2138;       // Card surface on Ink
+  --color-text: #FAFAF7;          // Paper
+  --color-text-soft: #C5CADC;     // Paper dimmed
+  --color-text-muted: #8088A1;
+  --color-border: rgba(250, 250, 247, 0.10);
+  --color-border-strong: rgba(250, 250, 247, 0.22);
+  --color-accent: #2B5BD7;        // Cobalt — primary on dark
+  --color-accent-hover: #4A77E8;
+  --color-accent-soft: rgba(43, 91, 215, 0.18);
+  --color-accent-2: #4A77E8;      // Lighter cobalt sub-accent
+  --color-accent-2-soft: rgba(74, 119, 232, 0.14);
+  --color-overlay: rgba(0, 0, 0, 0.78);
+}

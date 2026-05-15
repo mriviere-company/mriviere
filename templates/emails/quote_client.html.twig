@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body style="font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #0a0a0a;">
+    <h1 style="font-size: 24px; margin-bottom: 12px;">Bonjour {{ quote.clientName }},</h1>
+    <p>Merci pour votre demande de devis. Voici le récapitulatif :</p>
+
+    <div style="background: #fafafa; padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <p style="margin: 0;"><strong>Forfait choisi&nbsp;:</strong> {{ quote.package.name }} ({{ quote.package.maxPages }} pages)</p>
+        <p style="margin: 8px 0 0;"><strong>Création&nbsp;:</strong> {{ (quote.totalOneShotCents / 100)|number_format(0, ',', ' ') }} $ CAD</p>
+        <p style="margin: 8px 0 0;"><strong>Abonnement&nbsp;:</strong> {{ (quote.totalMonthlyCents / 100)|number_format(0, ',', ' ') }} $ CAD/mois</p>
+    </div>
+
+    <p>
+        Je vous recontacte personnellement sous <strong>24 h ouvrées</strong> avec les
+        prochaines étapes (planning, demandes de contenu, signature du devis officiel).
+    </p>
+
+    <p style="margin-top: 32px;">
+        À très vite,<br />
+        <strong>Matthieu Rivière</strong><br />
+        <a href="mailto:contact@rivierematthieu.com" style="color: #2B5BD7;">contact@rivierematthieu.com</a> · <a href="tel:+14383678089" style="color: #2B5BD7;">+1 438 367 8089</a><br />
+        <span style="color: #707070; font-size: 13px;">3915 Croissant Olivier, Brossard (Québec) J4Y 2L2 — NEQ 2279489522</span>
+    </p>
+</body>
+</html>
