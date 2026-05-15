@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb6d2b2-2790-43ed-b245-7a946ff8c522" name="Default" comment="Update workspace.xml task configuration and fix contact email formatting in locale files">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="3cb6d2b2-2790-43ed-b245-7a946ff8c522" name="Default" comment="Add full-page scroll composable, integrate with homepage, and enhance deploy script.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CV FR.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/home-snap.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/home-snap.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/assets/views/HomeView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.tsbuildinfo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +297,8 @@
       <workItem from="1626084270814" duration="260000" />
       <workItem from="1778319584192" duration="23003000" />
       <workItem from="1778819286315" duration="5570000" />
-      <workItem from="1778862338541" duration="2232000" />
+      <workItem from="1778862338541" duration="2500000" />
+      <workItem from="1778865860115" duration="774000" />
     </task>
     <task id="LOCAL-00001" summary="Remove legacy PHP pages and assets; migrate to Symfony-based structure.">
       <option name="closed" value="true" />
@@ -353,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778824965208</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add full-page scroll composable, integrate with homepage, and enhance deploy script.">
+      <option name="closed" value="true" />
+      <created>1778864831955</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1778864831955</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +369,8 @@
     <MESSAGE value="Update monolog configuration to use environment-specific log paths and adjust workspace.xml" />
     <MESSAGE value="Update permissions policy in .htaccess and workspace.xml tasks configuration" />
     <MESSAGE value="Update workspace.xml task configuration and fix contact email formatting in locale files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update workspace.xml task configuration and fix contact email formatting in locale files" />
+    <MESSAGE value="Add full-page scroll composable, integrate with homepage, and enhance deploy script." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add full-page scroll composable, integrate with homepage, and enhance deploy script." />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
