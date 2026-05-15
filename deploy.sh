@@ -140,6 +140,9 @@ RSYNC_FLAGS=(
   --exclude='/README.md'
   --exclude='/*.docx'
 
+  # Sous-domaines hébergés à côté du site — ne jamais toucher.
+  --exclude='/exemple/'            # sous-domaine indépendant, vit sur le serveur
+
   # Misc.
   --exclude='/public/build/.vite/manifest.json.gz'
   --include='/public/uploads/'
