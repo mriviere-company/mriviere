@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb6d2b2-2790-43ed-b245-7a946ff8c522" name="Default" comment="Update workspace.xml and .env for Symfony migration">
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="3cb6d2b2-2790-43ed-b245-7a946ff8c522" name="Default" comment="Refactor deployment script, improve .htaccess rules, and update workspace configuration for Symfony compatibility">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/monolog.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +297,7 @@
       <workItem from="1626082892533" duration="833000" />
       <workItem from="1626084270814" duration="260000" />
       <workItem from="1778319584192" duration="23003000" />
-      <workItem from="1778819286315" duration="2856000" />
+      <workItem from="1778819286315" duration="3631000" />
     </task>
     <task id="LOCAL-00001" summary="Remove legacy PHP pages and assets; migrate to Symfony-based structure.">
       <option name="closed" value="true" />
@@ -318,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778820551416</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactor deployment script, improve .htaccess rules, and update workspace configuration for Symfony compatibility">
+      <option name="closed" value="true" />
+      <created>1778822538296</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1778822538296</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +332,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Remove legacy PHP pages and assets; migrate to Symfony-based structure." />
     <MESSAGE value="Update workspace.xml and .env for Symfony migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update workspace.xml and .env for Symfony migration" />
+    <MESSAGE value="Refactor deployment script, improve .htaccess rules, and update workspace configuration for Symfony compatibility" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor deployment script, improve .htaccess rules, and update workspace configuration for Symfony compatibility" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
