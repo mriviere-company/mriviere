@@ -1,0 +1,67 @@
+parameters:
+    app.from_email: '%env(FROM_EMAIL)%'
+    app.admin_email: '%env(ADMIN_EMAIL)%'
+    app.public_base_url: '%env(PUBLIC_BASE_URL)%'
+    app.stripe.secret_key: '%env(STRIPE_SECRET_KEY)%'
+    app.stripe.webhook_secret: '%env(STRIPE_WEBHOOK_SECRET)%'
+    app.stripe.dashboard_base: '%env(STRIPE_DASHBOARD_BASE)%'
+    app.super_admin.issuer: '%env(SUPER_ADMIN_ISSUER)%'
+    app.super_admin.private_key_path: '%env(resolve:SUPER_ADMIN_PRIVATE_KEY)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            string $fromEmail: '%app.from_email%'
+            string $adminEmail: '%app.admin_email%'
+            string $publicBaseUrl: '%app.public_base_url%'
+            string $stripeSecretKey: '%app.stripe.secret_key%'
+            string $stripeWebhookSecret: '%app.stripe.webhook_secret%'
+            string $stripeDashboardBase: '%app.stripe.dashboard_base%'
+            string $superAdminIssuer: '%app.super_admin.issuer%'
+            string $superAdminPrivateKeyPath: '%app.super_admin.private_key_path%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Dto/'
+            - '../src/Config/'
+            - '../src/Kernel.php'
+
+    App\Service\MailerService:
+        arguments:
+            $fromEmail: '%app.from_email%'
+            $adminEmail: '%app.admin_email%'
+
+    App\Service\StripeService:
+        arguments:
+            $stripeSecretKey: '%app.stripe.secret_key%'
+            $publicBaseUrl: '%app.public_base_url%'
+
+    App\Controller\StripeWebhookController:
+        arguments:
+            $stripeWebhookSecret: '%app.stripe.webhook_secret%'
+        tags: ['controller.service_arguments']
+
+    App\Controller\Admin\SubscriptionAdminController:
+        arguments:
+            $stripeDashboardBase: '%app.stripe.dashboard_base%'
+        tags: ['controller.service_arguments']
+
+    App\Controller\Api\ContactController:
+        arguments:
+            $contactLimiter: '@limiter.contact'
+        tags: ['controller.service_arguments']
+
+    App\Controller\Api\QuoteController:
+        arguments:
+            $quoteLimiter: '@limiter.quote'
+        tags: ['controller.service_arguments']
+
+    App\Controller\Api\CallbackController:
+        arguments:
+            $callbackLimiter: '@limiter.callback'
+        tags: ['controller.service_arguments']

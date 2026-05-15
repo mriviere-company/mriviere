@@ -1,0 +1,34 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    session:
+        cookie_secure: 'auto'
+        cookie_samesite: lax
+        cookie_httponly: true
+        handler_id: null
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+
+    rate_limiter:
+        contact:
+            policy: 'token_bucket'
+            limit: 5
+            rate: { interval: '1 hour', amount: 5 }
+        quote:
+            policy: 'token_bucket'
+            limit: 3
+            rate: { interval: '1 hour', amount: 3 }
+        callback:
+            policy: 'token_bucket'
+            limit: 3
+            rate: { interval: '1 hour', amount: 3 }
+
+    php_errors:
+        log: true
+
+    http_method_override: false
+    handle_all_throwables: true
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

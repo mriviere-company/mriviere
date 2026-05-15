@@ -1,0 +1,16 @@
+Demande de rappel — rivierematthieu.com
+
+De : {{ callback.name }}{% if callback.email %} <{{ callback.email }}>{% else %} (pas d'email — appel téléphonique uniquement){% endif %}
+Reçue le {{ callback.createdAt|date('d/m/Y à H:i') }}{% if callback.ip %} depuis {{ callback.ip }}{% endif %}.
+
+Téléphone à rappeler : {{ callback.phone }}
+Créneau souhaité : {{ callback.preferredSlot|date('l j F Y à H\\hi', 'America/Toronto') }} (heure du Québec)
+
+{% if callback.message %}
+Message du client :
+{{ callback.message }}
+{% endif %}
+
+---
+{% if callback.email %}Répondre à cet email pour écrire au client, ou utiliser le numéro ci-dessus.
+{% else %}Le client n'a pas laissé d'email — utiliser le numéro ci-dessus pour le rappeler.{% endif %}

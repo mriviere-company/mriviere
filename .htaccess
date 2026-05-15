@@ -1,0 +1,15 @@
+# Project root — Hostinger mutualisé routing.
+# Public files live under /public — this rewrites every request into it.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Send all traffic through public/index.php while keeping the original path
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Block access to project root files (composer.json, .env, vendor/, etc.)
+<FilesMatch "^(composer\.|symfony\.|\.|phpunit|playwright|vite|tsconfig|package).*">
+    Require all denied
+</FilesMatch>

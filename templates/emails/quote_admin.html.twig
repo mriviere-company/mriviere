@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body style="font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #0a0a0a;">
+    <h1 style="font-size: 20px; margin-bottom: 12px;">Nouveau devis — {{ quote.package.name }}</h1>
+    <p>Référence&nbsp;: <code>{{ quote.id }}</code></p>
+
+    <h2 style="font-size: 16px; margin-top: 20px;">Client</h2>
+    <p>
+        <strong>{{ quote.clientName }}</strong>{% if quote.clientCompany %} ({{ quote.clientCompany }}){% endif %}<br />
+        {{ quote.clientEmail }} · {{ quote.clientPhone }}<br />
+        {% if quote.clientAddress %}{{ quote.clientAddress }}{% endif %}
+    </p>
+
+    <h2 style="font-size: 16px; margin-top: 20px;">Brief</h2>
+    <pre style="white-space: pre-wrap; font-family: inherit; background: #fafafa; padding: 16px; border-radius: 8px; line-height: 1.6;">{{ quote.projectDescription }}</pre>
+
+    <h2 style="font-size: 16px; margin-top: 20px;">Montants</h2>
+    <p>
+        Création&nbsp;: <strong>{{ (quote.totalOneShotCents / 100)|number_format(0, ',', ' ') }} $ CAD</strong><br />
+        Abonnement&nbsp;: <strong>{{ (quote.totalMonthlyCents / 100)|number_format(0, ',', ' ') }} $ CAD/mois</strong><br />
+        Acompte&nbsp;50&nbsp;%&nbsp;: <strong>{{ (quote.totalOneShotCents / 200)|number_format(0, ',', ' ') }} $ CAD</strong>
+    </p>
+</body>
+</html>

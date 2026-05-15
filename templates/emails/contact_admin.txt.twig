@@ -1,0 +1,11 @@
+Nouveau message — rivierematthieu.com
+
+De : {{ message.name }} <{{ message.email }}>
+Reçu le {{ message.createdAt|date('d/m/Y à H:i') }}{% if message.ip %} depuis {{ message.ip }}{% endif %}.
+
+---
+
+{{ message.message }}
+
+---
+Répondre directement à cet email pour répondre au client.

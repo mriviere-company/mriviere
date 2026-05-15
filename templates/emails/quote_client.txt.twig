@@ -1,0 +1,15 @@
+Bonjour {{ quote.clientName }},
+
+Merci pour votre demande de devis. Voici le récapitulatif :
+
+Forfait : {{ quote.package.name }} ({{ quote.package.maxPages }} pages)
+Création : {{ (quote.totalOneShotCents / 100)|number_format(0, ',', ' ') }} $ CAD
+Abonnement : {{ (quote.totalMonthlyCents / 100)|number_format(0, ',', ' ') }} $ CAD/mois
+
+Je vous recontacte personnellement sous 24 h ouvrées avec les prochaines étapes
+(planning, demandes de contenu, signature du devis officiel).
+
+À très vite,
+Matthieu Rivière
+contact@rivierematthieu.com · +1 438 367 8089
+3915 Croissant Olivier, Brossard (Québec) J4Y 2L2 — NEQ 2279489522
