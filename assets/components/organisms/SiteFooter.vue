@@ -106,11 +106,11 @@ const year = new Date().getFullYear();
 
   &__cols {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-6);
 
-    @media (max-width: 540px) {
-      grid-template-columns: 1fr 1fr;
+    @media (min-width: 541px) {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 

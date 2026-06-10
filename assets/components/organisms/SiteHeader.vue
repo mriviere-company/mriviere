@@ -181,40 +181,53 @@ function toggleLocale() {
   }
 
   &__name {
-    @media (max-width: 540px) {
-      display: none;
+    display: none;
+
+    @media (min-width: 541px) {
+      display: inline;
     }
   }
 
   &__nav {
+    position: fixed;
+    inset: 64px 0 0 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-5);
+    padding: var(--space-7) var(--space-5);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
 
-    @media (max-width: 880px) {
-      position: fixed;
-      inset: 64px 0 0 0;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-5);
-      padding: var(--space-7) var(--space-5);
-      background: var(--color-bg);
-      border-top: 1px solid var(--color-border);
-      transform: translateX(100%);
-      transition: transform var(--transition-base);
+    &--open {
+      transform: translateX(0);
+    }
 
-      &--open {
-        transform: translateX(0);
-      }
+    @media (min-width: 881px) {
+      position: static;
+      inset: auto;
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+      background: none;
+      border-top: 0;
+      transform: none;
+      transition: none;
     }
   }
 
   &__link {
     position: relative;
     font-family: var(--font-display);
-    font-size: var(--fs-sm);
+    font-size: var(--fs-lg);
     color: var(--color-text-soft);
     transition: color var(--transition-base);
+
+    @media (min-width: 881px) {
+      font-size: var(--fs-sm);
+    }
 
     &::after {
       content: '';
@@ -261,10 +274,6 @@ function toggleLocale() {
         transform: translate(2px, -2px);
       }
     }
-
-    @media (max-width: 880px) {
-      font-size: var(--fs-lg);
-    }
   }
 
   &__actions {
@@ -293,14 +302,13 @@ function toggleLocale() {
 
   &__locale {
     span {
+      display: none;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       font-size: var(--fs-xs);
-    }
 
-    @media (max-width: 540px) {
-      span {
-        display: none;
+      @media (min-width: 541px) {
+        display: inline;
       }
     }
   }

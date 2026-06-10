@@ -42,7 +42,7 @@ final class SubscriptionAdminController extends AbstractController
                 'customerEmail' => is_object($sub->customer) ? ($sub->customer->email ?? '') : '',
                 'packageName' => $sub->metadata['package'] ?? 'unknown',
                 'amount' => $price?->unit_amount ?? 0,
-                'currency' => $price?->currency ?? 'eur',
+                'currency' => $price?->currency ?? 'cad',
                 'status' => $sub->status,
                 'currentPeriodEnd' => isset($sub->current_period_end) ? date(\DateTimeInterface::ATOM, $sub->current_period_end) : '',
                 'stripeUrl' => $this->stripeDashboardBase . '/subscriptions/' . $sub->id,

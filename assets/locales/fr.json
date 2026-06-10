@@ -186,7 +186,13 @@
     "depositDetail": "({deposit} d'acompte + {monthly} de premier mois)",
     "noticeStripe": "Paiement sécurisé via Stripe. Le solde sera prélevé à la livraison du site.",
     "submit": "Régler l'acompte et signer",
-    "submitError": "Impossible de soumettre la demande pour le moment."
+    "submitError": "Impossible de soumettre la demande pour le moment.",
+    "errorMissingFields": "Champs obligatoires manquants."
+  },
+  "admin": {
+    "login": {
+      "invalidCredentials": "Identifiants incorrects."
+    }
   },
   "confirm": {
     "loading": "Chargement…",

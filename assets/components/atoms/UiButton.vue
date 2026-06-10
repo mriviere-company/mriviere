@@ -58,7 +58,7 @@ const bindings = computed(() => {
   --btn-color: var(--color-bg);
   --btn-border: transparent;
   --btn-hover-bg: var(--color-accent);
-  --btn-hover-color: #fff;
+  --btn-hover-color: var(--color-on-accent);
 
   position: relative;
   display: inline-flex;
@@ -110,7 +110,7 @@ const bindings = computed(() => {
 
   &--glow {
     --btn-bg: var(--color-accent);
-    --btn-color: #fff;
+    --btn-color: var(--color-on-accent);
     --btn-hover-bg: var(--color-accent-hover);
     box-shadow: 0 12px 30px -12px var(--color-accent);
 

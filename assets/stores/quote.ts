@@ -35,7 +35,7 @@ export const useQuoteStore = defineStore('quote', {
     },
     async submit(): Promise<{ ok: boolean; checkoutUrl?: string; error?: string }> {
       if (!this.draft.package || !this.draft.clientName || !this.draft.clientEmail) {
-        return { ok: false, error: 'Champs obligatoires manquants.' };
+        return { ok: false, error: i18n.global.t('quote.errorMissingFields') };
       }
       this.submitting = true;
       this.error = null;

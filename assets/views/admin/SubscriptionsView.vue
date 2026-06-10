@@ -26,7 +26,7 @@ onMounted(async () => {
 });
 
 function fmt(cents: number, currency: string) {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: currency.toUpperCase() }).format(cents / 100);
+  return new Intl.NumberFormat('fr-CA', { style: 'currency', currency: currency.toUpperCase(), currencyDisplay: 'narrowSymbol' }).format(cents / 100);
 }
 </script>
 
@@ -54,7 +54,7 @@ function fmt(cents: number, currency: string) {
             </div>
           </div>
           <p class="text-muted subs-admin__footer">
-            Prochain renouvellement&nbsp;: {{ new Date(sub.currentPeriodEnd).toLocaleDateString('fr-FR') }}
+            Prochain renouvellement&nbsp;: {{ new Date(sub.currentPeriodEnd).toLocaleDateString('fr-CA') }}
           </p>
         </UiCard>
       </li>

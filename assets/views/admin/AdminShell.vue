@@ -72,11 +72,11 @@ async function logout() {
 <style lang="scss" scoped>
 .admin-shell {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 1fr;
   min-height: 100vh;
 
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 721px) {
+    grid-template-columns: 240px 1fr;
   }
 
   &__sidebar {
