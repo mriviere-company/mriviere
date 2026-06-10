@@ -8,6 +8,7 @@ vi.mock('@/api/client', () => ({
 }));
 
 import { call } from '@/api/client';
+import { i18n } from '@/i18n';
 
 describe('useQuoteStore', () => {
   beforeEach(() => {
@@ -26,7 +27,7 @@ describe('useQuoteStore', () => {
     const store = useQuoteStore();
     const res = await store.submit();
     expect(res.ok).toBe(false);
-    expect(res.error).toMatch(/manquants/);
+    expect(res.error).toBe(i18n.global.t('quote.errorMissingFields'));
   });
 
   it('returns checkoutUrl on successful submit', async () => {

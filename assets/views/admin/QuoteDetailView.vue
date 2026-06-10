@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import UiCard from '@/components/molecules/UiCard.vue';
 import UiTag from '@/components/atoms/UiTag.vue';
 import { apiClient, call } from '@/api/client';
+import { formatMoney } from '@/i18n';
 
 interface QuoteDetail {
   id: string;
@@ -33,7 +34,7 @@ onMounted(async () => {
 });
 
 function fmt(cents: number) {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(cents / 100);
+  return formatMoney(cents, 'fr');
 }
 </script>
 

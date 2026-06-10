@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { LogIn } from 'lucide-vue-next';
 import UiButton from '@/components/atoms/UiButton.vue';
 import UiField from '@/components/atoms/UiField.vue';
@@ -9,6 +10,7 @@ import { useAuthStore } from '@/stores/auth';
 const route = useRoute();
 const router = useRouter();
 const auth = useAuthStore();
+const { t } = useI18n();
 
 const email = ref('');
 const password = ref('');
@@ -25,7 +27,7 @@ async function submit() {
     const target = (route.query.redirect as string | undefined) ?? '/admin/dashboard';
     router.replace(target);
   } else {
-    error.value = res.error ?? 'Identifiants incorrects.';
+    error.value = res.error ?? t('admin.login.invalidCredentials');
   }
 }
 </script>

@@ -186,7 +186,13 @@
     "depositDetail": "({deposit} deposit + {monthly} first month)",
     "noticeStripe": "Secure payment via Stripe. The balance is charged on delivery.",
     "submit": "Pay deposit and sign",
-    "submitError": "Couldn't submit the request right now."
+    "submitError": "Couldn't submit the request right now.",
+    "errorMissingFields": "Required fields are missing."
+  },
+  "admin": {
+    "login": {
+      "invalidCredentials": "Identifiants incorrects."
+    }
   },
   "confirm": {
     "loading": "Loading…",

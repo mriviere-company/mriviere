@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import UiTag from '@/components/atoms/UiTag.vue';
 import { apiClient, call } from '@/api/client';
+import { formatMoney } from '@/i18n';
 import type { QuoteSummary } from '@/types';
 
 const items = ref<QuoteSummary[]>([]);
@@ -25,7 +26,7 @@ const filtered = computed(() => {
 });
 
 function fmt(cents: number) {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(cents / 100);
+  return formatMoney(cents, 'fr');
 }
 
 function statusVariant(s: QuoteSummary['status']) {
@@ -88,7 +89,7 @@ function statusLabel(s: QuoteSummary['status']) {
           <td>{{ fmt(q.totalOneShot) }}</td>
           <td>{{ fmt(q.totalMonthly) }}/mois</td>
           <td><UiTag :variant="statusVariant(q.status)">{{ statusLabel(q.status) }}</UiTag></td>
-          <td class="text-muted">{{ new Date(q.createdAt).toLocaleDateString('fr-FR') }}</td>
+          <td class="text-muted">{{ new Date(q.createdAt).toLocaleDateString('fr-CA') }}</td>
         </tr>
         <tr v-if="filtered.length === 0">
           <td colspan="6" class="text-muted">Aucun devis ne correspond.</td>

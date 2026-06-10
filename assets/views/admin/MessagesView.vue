@@ -43,7 +43,7 @@ async function markAsRead(id: number) {
           </header>
           <p class="messages-admin__body">{{ msg.message }}</p>
           <footer class="messages-admin__foot text-muted">
-            <span>{{ new Date(msg.createdAt).toLocaleString('fr-FR') }}</span>
+            <span>{{ new Date(msg.createdAt).toLocaleString('fr-CA') }}</span>
             <button v-if="msg.status === 'unread'" type="button" @click="markAsRead(msg.id)">
               Marquer comme lu
             </button>

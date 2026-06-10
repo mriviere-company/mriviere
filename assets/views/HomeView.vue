@@ -548,15 +548,15 @@ const features = [
     &--featured {
       background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
       border-color: transparent;
-      color: #fff;
+      color: var(--color-on-accent);
 
       h3,
       .cta-block__delay {
-        color: #fff;
+        color: var(--color-on-accent);
       }
 
       .cta-block__icon {
-        color: #fff;
+        color: var(--color-on-accent);
       }
 
       &:hover {
