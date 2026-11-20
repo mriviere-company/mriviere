@@ -1,5 +1,12 @@
 # rivierematthieu.com
 
+**En ligne : [rivierematthieu.com](https://rivierematthieu.com)**
+
+> *In English:* the bilingual (French/English) website of my web development studio in Québec:
+> a Symfony 8 API and a Vue 3 single-page app, Stripe Checkout in CAD (50 % deposit plus a
+> monthly subscription), a back office for quotes and callback requests, and a central
+> dashboard that monitors client sites through EdDSA-signed JWT health checks.
+
 Site vitrine personnel de **Matthieu Rivière** — travailleur autonome au **Québec (Canada)** en création de sites web. Bilingue **FR + EN**. **Symfony 8 + Vue 3 SPA**, design audacieux, intégration Stripe en **CAD** (acompte 50 % + abonnement mensuel), petit back-office pour gérer les demandes et superviser des clones clients.
 
 > Le site est aussi une démo vivante des compétences techniques : tout ce qui est sur la page de présentation est réellement dans le code.
